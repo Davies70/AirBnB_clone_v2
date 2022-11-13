@@ -51,7 +51,7 @@ def number(n):
     """returns only integers"""
     try:
         num = int(n)
-        return "{} is a number".format(n)
+        return "{} is a number".format(num)
     except ValueError:
         pass
 
