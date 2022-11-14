@@ -15,7 +15,7 @@ Routes:
  - /number/<n>: display “n is a number” only if n is an integer
  - You must use the option strict_slashes=False in your route definition """
 
-from flask import Flask
+from flask import Flask, abort
 app = Flask(__name__)
 
 
@@ -53,7 +53,7 @@ def number(n):
         num = int(n)
         return "{} is a number".format(num)
     except ValueError:
-        pass
+        abort(404)
 
 
 if __name__ == '__main__':
