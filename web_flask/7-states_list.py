@@ -3,15 +3,18 @@
 
 from flask import Flask, render_template
 from models import storage
+from os import environ
+from models.state import State
 
 
 app = Flask(__name__)
+environ['FLASK_ENV'] = 'development'
 
 
 @app.route('/states_list', strict_slashes=False)
 def dict_states():
     ''' returns HTML page wit states and id '''
-    states = storage.all('State')
+    states = storage.all(State)
     return render_template('7-states_list.html', states=states)
 
 
@@ -22,4 +25,4 @@ def end_session(exc):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)
